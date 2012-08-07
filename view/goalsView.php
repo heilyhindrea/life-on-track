@@ -11,13 +11,14 @@ include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\contro
     </head>
     <body>     
         
-    <a href="#">Create new goal</a>    
+    <a href="index.php?p=editGoal&mode=create">Create new goal</a>    
     
     <?php 
-    
+    $controller = new goalsController();
+    $goals = $controller->getAllGoals();
       
    
-       /*foreach ($goals as $goal) { 
+       foreach ($goals as $goal) { 
            
            
           echo '<h3>'.$goal->__getHeading().'</h3><a href="index.php?p=editGoal&mode=edit&id='.$goal->__getId().'">Edit</a> <br />';
@@ -33,7 +34,7 @@ include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\contro
           
       
        }
-    */
+    
     ?>
     
    

@@ -81,6 +81,7 @@ if(isset($_POST['save'])&&$_POST['mode']==="edit"){
                 
                 foreach($goals as $goal){
                     
+                    /*PPS! see oht  on siin alles muutmata*/
                     echo '<option value="'.$goal->__getId().'">Volvo</option>';
                 }
                 

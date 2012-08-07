@@ -1,7 +1,7 @@
 <?php
 
 include_once 'config/DatabaseConnection.php';
-include 'model/Task.php';
+include_once 'model/Task.php';
 /**
  * Description of taskDAO
  *

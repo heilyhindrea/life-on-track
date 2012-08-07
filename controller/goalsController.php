@@ -1,50 +1,24 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title></title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!--<link href="css/nullify_default.css" rel="stylesheet" type="text/css"> -->
-        
-    </head>
-    <body>
-      
-            
-   
-
 <?php
+
 include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\dao\goalDAO.php';
-include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\config\LogFile.php';
 
-if(sizeof($_GET)===0){
-    
-    
-    $goals = new GetAllGoals();
-    $allGoals = $goals->getAllGoals(); 
-    echo 'peale päringut';
-    if(isset($allGoals)){
-        echo 'jah sain midagi baasist';
-    }
-    else{
-        echo 'null olin';
-    }
-  
-    
-}
+class goalsController{
 
-class GetAllGoals{
-    function getAllGoals() {
+    
+    
+    public function getAllGoals() {
         
         $dao  =  new goalDAO();
         $goals = $dao->getAllGoals();
         
        
         return $goals;
-    }
-}
-    
-    function processRequest($request){
+    }  
+
+
+    public function processRequest($request){
      
-        //editGoal createGoal
+      
         $editGoal = false;
         $createGoal = false;
         $newGoalValues = null;
@@ -113,7 +87,7 @@ class GetAllGoals{
     } 
      
     
-      function getGoalById($id) {
+      public function getGoalById($id) {
          
         $dao  =  new goalDAO();
         $goal = $dao->getGoalById($id);
@@ -121,7 +95,7 @@ class GetAllGoals{
         return $goal;
      }
      
-      function updateGoal($goal){
+      public function updateGoal($goal){
          
         $dao  =  new goalDAO();
         return $dao->updateGoal($goal);
@@ -130,17 +104,15 @@ class GetAllGoals{
          
      }
      
-      function createGoal($goal){
+      public function createGoal($goal){
          $dao= new goalDAO();
          return $dao->createGoal($goal);
          
      }
-    
+     
+   
 
+    
+}
 
 ?>
-
-
-    
-    </body>
-</html>

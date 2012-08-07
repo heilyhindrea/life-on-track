@@ -1,10 +1,6 @@
 <?php
 
-/**
- * Description of Goal
- *
- * @author heilyh
- */
+
 class Task {
 
     private $id,
