@@ -26,6 +26,7 @@ include_once 'controller/indexController.php';
        
        $controller = new indexController();
        $controller->processRequest($_GET);
+      
        
        ?>
         

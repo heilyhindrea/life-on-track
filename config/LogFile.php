@@ -17,17 +17,20 @@ class LogFile {
    public function __construct() {
        
             $this->myFile = "log.txt";
-            $this->fh = fopen($this->myFile, 'w') or die("can't open file");
+            
    }
     
    
-   public function close() {
+   /*public function close() {
         fclose($this->fh);;
-    }
+    }*/
 
    public function write($msg){
        
-            fwrite($this->fh, $msg);
+            /*$this->fh = fopen($this->myFile, 'w') or die("can't open file");*/
+            //fwrite($this->fh, $msg);
+            file_put_contents($this->myFile, $msg, FILE_APPEND);
+           
 
             
 

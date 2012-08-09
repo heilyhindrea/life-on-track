@@ -52,8 +52,6 @@ if(isset($_POST['save'])&&$_POST['mode']==="edit"){
     </head>
     <body>
          <?php 
-        
-               
        
         if(isset($_GET['r'])){
             switch($_GET['r']){
@@ -78,7 +76,7 @@ if(isset($_POST['save'])&&$_POST['mode']==="edit"){
             Due Date: <input type="text" value="<?php if($_GET['mode']==="edit"){echo $goal->__getDueDate();}?>" name="dueDate"/><br />
             
             <?php   if($_GET['mode']==="edit" && $goal->__getOnDashboard()==="1"){?>
-            On Dashboard: <input  type="checkbox" name="onDashboard" checked="yes"/><?php }else {?>
+            On Dashboard: <input  type="checkbox" name="onDashboard" checked="checked"/><?php }else {?>
             On Dashboard: <input  type="checkbox" name="onDashboard"/><?php }?>
             <?php if($_GET['mode']==="edit"){?>
             <input type="hidden" name="id" value="<?php echo $goal->__getId(); ?>" />

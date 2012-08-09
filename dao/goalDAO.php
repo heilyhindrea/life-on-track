@@ -1,8 +1,8 @@
 <?php
 
 include_once 'config/DatabaseConnection.php';
-include 'model/Goal.php';
-include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\config\LogFile.php';
+include_once 'model/Goal.php';
+include_once 'config/LogFile.php';
 
 
 /**
@@ -17,6 +17,8 @@ class goalDAO {
           
           $dbCon = new DatabaseConnection();
           $this->dbLink = $dbCon->getConnectionMySql();
+          
+          
       }
       
       function __destruct() {
@@ -24,7 +26,10 @@ class goalDAO {
           mysql_close($this->dbLink);
       }
       
-      function getAllGoals(){  
+      function getAllGoals(){
+          
+       $log= new LogFile();
+       $log->write('goalsDao: getAllGoals():');
          
         $goals = array();
       

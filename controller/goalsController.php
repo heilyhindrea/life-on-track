@@ -1,16 +1,19 @@
 <?php
 
 include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\dao\goalDAO.php';
+include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\config\LogFile.php';
 
 class goalsController{
 
     
     
     public function getAllGoals() {
-        
+       
         $dao  =  new goalDAO();
         $goals = $dao->getAllGoals();
         
+       $log= new LogFile();
+       $log->write('UUS: goalsController: getAllGoals():');
        
         return $goals;
     }  

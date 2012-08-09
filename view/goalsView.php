@@ -2,6 +2,7 @@
 <?php 
 
 include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\controller\goalsController.php';
+include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\config\LogFile.php';
 
 ?>
 <html>
@@ -14,10 +15,11 @@ include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\contro
     <a href="index.php?p=editGoal&mode=create">Create new goal</a>    
     
     <?php 
+    
     $controller = new goalsController();
     $goals = $controller->getAllGoals();
-      
-   
+    
+     
        foreach ($goals as $goal) { 
            
            
@@ -32,8 +34,9 @@ include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\contro
             echo '</ul>';
             
           
-      
+       
        }
+       
     
     ?>
     
