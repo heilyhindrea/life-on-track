@@ -21,15 +21,12 @@ class LogFile {
    }
     
    
-   /*public function close() {
-        fclose($this->fh);;
-    }*/
+   
 
    public function write($msg){
        
-            /*$this->fh = fopen($this->myFile, 'w') or die("can't open file");*/
-            //fwrite($this->fh, $msg);
-            file_put_contents($this->myFile, $msg, FILE_APPEND);
+           
+            file_put_contents($this->myFile, $msg."\n", FILE_APPEND);
            
 
             

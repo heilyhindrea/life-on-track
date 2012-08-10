@@ -1,6 +1,7 @@
 <?php
 
 include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\dao\taskDao.php';
+include_once 'config/LogFile.php';
 
 class tasksController {
 
@@ -39,10 +40,11 @@ class tasksController {
                  
                   $newTaskValues->__setId($request['id']);
                   $newTaskValues->__setHeading($request['heading']);
-                  $newTaskValues->__setDesc($request['description']);
+                  $newTaskValues->__setDescription($request['description']);
                   $newTaskValues->__setDueDate($request['dueDate']);
                   $newTaskValues->__setActionDate($request['actionDate']);
-                  $newTaskValues->__setGoal($request['goalId']);
+                  $newTaskValues->__setGoal($request['goalsList']);
+                  
                   
                   $editTask= false;
                   return $this->updateTask($newTaskValues);
@@ -56,7 +58,7 @@ class tasksController {
                   $newTask->__setDescription($request['description']);
                   $newTask->__setDueDate($request['dueDate']);
                   $newTask->__setActionDate($request['actionDate']);
-                  $newTask->__setGoal($request['goalId']);
+                  $newTask->__setGoal($request['goalsList']);
                   
                   $createTask=false;
                   return $this->createTask($newTask);

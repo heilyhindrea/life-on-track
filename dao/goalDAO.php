@@ -28,8 +28,8 @@ class goalDAO {
       
       function getAllGoals(){
           
-       $log= new LogFile();
-       $log->write('goalsDao: getAllGoals():');
+      /* $log= new LogFile();
+       $log->write('goalsDao: getAllGoals():');*/
          
         $goals = array();
       

@@ -2,6 +2,7 @@
 
 include_once 'config/DatabaseConnection.php';
 include_once 'model/Task.php';
+include_once 'config/LogFile.php';
 /**
  * Description of taskDAO
  *
@@ -63,6 +64,9 @@ class taskDAO {
 
                 while ($row = mysql_fetch_assoc($result)) {
                     
+                  /*$log = new LogFile();
+                  $log->write("taskDao: getTaskByGoal: ".$row["due_date"]);*/
+                    
                     $task = new Task($row["id"],$row["heading"],$row["description"],$row["due_date"],$row["action_date"],$row["goal_id"]);
                     array_push($tasks, $task);
                       
@@ -81,7 +85,7 @@ class taskDAO {
     
     public function updateTask($newTaskValues){
         
-        $query="UPDATE task SET heading = '".$newTaskValues->__getHeading()."', description ='".$newTaskValues->__getDescription()."', due_date='".$newTaskValues->__getDueDate()."', action_date='".$newTaskValues->__getActionDate()."' WHERE id =".$newTaskValues->__getId();
+        $query="UPDATE task SET heading = '".$newTaskValues->__getHeading()."', description ='".$newTaskValues->__getDescription()."', due_date='".$newTaskValues->__getDueDate()."', action_date='".$newTaskValues->__getActionDate()."', goal_id='".$newTaskValues->__getGoal()."' WHERE id =".$newTaskValues->__getId();
             
             
             $result = mysql_query($query);
@@ -101,8 +105,8 @@ class taskDAO {
           $query="INSERT INTO task(heading, description, due_date, action_date,goal_id) VALUES ('".$newTask->__getHeading()."','".$newTask->__getDescription()."','".$newTask->__getDueDate()."','".$newTask->__getActionDate()."','".$newTask->__getGoal()."')";
           $result = mysql_query($query);
             
-           $log=new LogFile();
-           $log->write($query);
+           /*$log=new LogFile();
+           $log->write($query);*/
             
             if($result){
             

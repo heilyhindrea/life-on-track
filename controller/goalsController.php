@@ -12,8 +12,8 @@ class goalsController{
         $dao  =  new goalDAO();
         $goals = $dao->getAllGoals();
         
-       $log= new LogFile();
-       $log->write('UUS: goalsController: getAllGoals():');
+       /*$log= new LogFile();
+       $log->write('goalsController: getAllGoals():');*/
        
         return $goals;
     }  

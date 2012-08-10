@@ -16,7 +16,7 @@ if(isset($_POST['save'])&&$_POST['mode']==="edit"){
                     
              $response = $controller->processRequest($_POST);
             
-             header("Location: http://localhost:8080/testGoals/index.php?p=editTask&id=".$_POST['id']."&r=".$response);
+             header("Location: http://localhost:8080/testGoals/index.php?p=editTask&mode=edit&id=".$_POST['id']."&r=".$response);
              
            
          }
@@ -73,7 +73,7 @@ if(isset($_POST['save'])&&$_POST['mode']==="edit"){
             Description:<input type="text" name="description" value="<?php if($_GET['mode']==="edit"){echo $task->__getDescription(); }?>"/><br /> 
             Due date:<input type="text" name="dueDate" value="<?php if($_GET['mode']==="edit"){echo $task->__getDueDate();} ?>"/><br /> 
             Action date:<input type="text" name="actionDate" value="<?php if($_GET['mode']==="edit"){echo $task->__getActionDate();} ?>"/> <br />  
-            Belongs to Goal:<select>
+            Belongs to Goal:<select name ="goalsList">
                 <?php 
                 
                 $goalsController = new goalsController();
@@ -82,7 +82,10 @@ if(isset($_POST['save'])&&$_POST['mode']==="edit"){
                 foreach($goals as $goal){
                     
                     /*PPS! see oht  on siin alles muutmata*/
-                    echo '<option value="'.$goal->__getId().'">Volvo</option>';
+                    if($task->__getGoal()===$goal->__getId()){
+                        echo '<option selected = "selected"name ="'.$goal->__getId().'" value="'.$goal->__getId().'">'.$goal->__getHeading().'</option>';
+                    }
+                    else {echo '<option name ="'.$goal->__getId().'" value="'.$goal->__getId().'">'.$goal->__getHeading().'</option>';}
                 }
                 
                 ?>
@@ -90,7 +93,6 @@ if(isset($_POST['save'])&&$_POST['mode']==="edit"){
                 
             </select>
             
-            <input type="hidden" name="goalId" value="1" />
             
             <?php 
             
