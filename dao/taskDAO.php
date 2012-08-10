@@ -118,6 +118,20 @@ class taskDAO {
             }
         
     }
+    
+      public function deleteTask($id){
+            
+            $query ="DELETE FROM task WHERE id=".$id;
+            $result = mysql_query($query);
+            
+            if($result){
+                return true;
+            }
+            else {
+                return false;
+            }
+            
+        }
 }
 
 ?>

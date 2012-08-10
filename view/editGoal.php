@@ -16,11 +16,9 @@ if(isset($_POST['save'])){
              $response = $controller->processRequest($_POST);
             
              header("Location: http://localhost:8080/testGoals/index.php?p=editGoal&id=".$_POST['id']."&r=".$response);
-             
            
          }
-         
-   
+          
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,12 +54,12 @@ if(isset($_POST['save'])){
             
             <?php   if($goal->__getOnDashboard()==="1")
                     {?>
-                        On Dashboard: <input  type="checkbox" name="onDashboard" checked="checked"/><?php 
+                        On Dashboard: <input  type="checkbox" name="onDashboard" checked="checked"/><br /><?php 
             
                     }else 
                     {?>
                     
-                        On Dashboard: <input  type="checkbox" name="onDashboard"/><?php 
+                        On Dashboard: <input  type="checkbox" name="onDashboard"/><br /><?php 
                     
                     }?>
             

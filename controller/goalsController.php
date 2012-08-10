@@ -113,6 +113,13 @@ class goalsController{
          
      }
      
+     public function deleteGoal($id){
+         $dao = new goalDAO();
+         return $dao->deleteGoal($id);
+     }
+     
+     
+     
    
 
     

@@ -2,6 +2,19 @@
 include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\controller\tasksController.php';
 include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\controller\goalsController.php';
 
+
+$tasksController = new tasksController();
+
+if(isset($_GET['d'])&&$_GET['d']==='true'){
+    
+    $response = $tasksController->deleteTask($_GET['id']);
+    if($response){
+        echo 'Õnnelikult kustutatud!<br />';
+    }
+    else{
+        echo 'Kustutamine ei õnnestunud';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,7 +27,7 @@ include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\contro
         <?php 
         
         
-        $tasksController = new tasksController();
+       
         $goalsController = new goalsController();
         
         $goals= $goalsController->getAllGoals();
@@ -31,8 +44,8 @@ include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\contro
              foreach ($tasks as $task){
                 
              
-                 echo '<li>'.$task->__getHeading().' <a href="index.php?p=editTask&id='.$task->__getId().'">Edit</a></li>';
-                 
+                 echo '<li>'.$task->__getHeading().' <a href="index.php?p=editTask&id='.$task->__getId().'">Edit</a>';
+                 echo '   <a href="index.php?p=tasksView&d=true&id='.$task->__getId().'">Delete</a></li>';
                  
                  
              }

@@ -116,6 +116,20 @@ class goalDAO {
               echo "Problem with connection in goalDAO: createGoal";
             }
         }
+        
+        public function deleteGoal($id){
+            
+            $query ="DELETE FROM goal WHERE id=".$id;
+            $result = mysql_query($query);
+            
+            if($result){
+                return true;
+            }
+            else {
+                return false;
+            }
+            
+        }
 }
 
 ?>

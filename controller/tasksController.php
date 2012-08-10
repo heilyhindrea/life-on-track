@@ -92,6 +92,11 @@ class tasksController {
         $dao = new taskDAO();
         return $dao->createTask($newTask);
     }
+    
+    public function deleteTask($id){
+         $dao = new taskDAO();
+         return $dao->deleteTask($id);
+     }
 
 }
 

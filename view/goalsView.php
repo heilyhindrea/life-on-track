@@ -4,6 +4,18 @@
 include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\controller\goalsController.php';
 include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\config\LogFile.php';
 
+$controller = new goalsController();
+
+if(isset($_GET['d'])&&$_GET['d']==='true'){
+    
+    $response = $controller->deleteGoal($_GET['id']);
+    if($response){
+        echo 'Õnnelikult kustutatud!<br />';
+    }
+    else{
+        echo 'Kustutamine ei õnnestunud';
+    }
+}
 ?>
 <html>
     <head>
@@ -16,14 +28,15 @@ include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\config
     
     <?php 
     
-    $controller = new goalsController();
+   
     $goals = $controller->getAllGoals();
     
      
        foreach ($goals as $goal) { 
            
            
-          echo '<h3>'.$goal->__getHeading().'</h3><a href="index.php?p=editGoal&id='.$goal->__getId().'">Edit</a> <br />';
+          echo '<h3>'.$goal->__getHeading().'</h3><a href="index.php?p=editGoal&id='.$goal->__getId().'">Edit</a>';
+          echo '   <a href="index.php?p=goalsView&d=true&id='.$goal->__getId().'">Delete</a> <br />';
             
           
             echo '<ul>';
