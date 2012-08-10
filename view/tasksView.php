@@ -10,7 +10,7 @@ include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\contro
         <title>VIEW TASKS</title>
     </head>
     <body>
-          <a href="index.php?p=editTask&mode=create">Create new task</a>
+          <a href="index.php?p=createTask">Create new task</a>
         <?php 
         
         
@@ -31,7 +31,7 @@ include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\contro
              foreach ($tasks as $task){
                 
              
-                 echo '<li>'.$task->__getHeading().' <a href="index.php?p=editTask&mode=edit&id='.$task->__getId().'">Edit</a></li>';
+                 echo '<li>'.$task->__getHeading().' <a href="index.php?p=editTask&id='.$task->__getId().'">Edit</a></li>';
                  
                  
                  
