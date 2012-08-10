@@ -12,7 +12,7 @@ include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\config
     </head>
     <body>     
         
-    <a href="index.php?p=editGoal&mode=create">Create new goal</a>    
+    <a href="index.php?p=createGoal">Create new goal</a>    
     
     <?php 
     
@@ -23,7 +23,7 @@ include_once 'C:\Program Files\BitNami WAMPStack\apache2\htdocs\testGoals\config
        foreach ($goals as $goal) { 
            
            
-          echo '<h3>'.$goal->__getHeading().'</h3><a href="index.php?p=editGoal&mode=edit&id='.$goal->__getId().'">Edit</a> <br />';
+          echo '<h3>'.$goal->__getHeading().'</h3><a href="index.php?p=editGoal&id='.$goal->__getId().'">Edit</a> <br />';
             
           
             echo '<ul>';
