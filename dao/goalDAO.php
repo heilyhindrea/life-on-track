@@ -87,10 +87,14 @@ class goalDAO {
         
         function updateGoal($goal){
             
+              if($goal->__getDueDate()==='0000-00-00'){
+            
+                    $query="UPDATE goal SET heading = '".$goal->__getHeading()."', description ='".$goal->__getDesc()."', on_dashboard='".(int)$goal->__getOnDashboard()."', active='N' WHERE id =".$goal->__getId();
+              }
+              else {
+                  $query="UPDATE goal SET heading = '".$goal->__getHeading()."', description ='".$goal->__getDesc()."', due_date='".$goal->__getDueDate()."', on_dashboard='".(int)$goal->__getOnDashboard()."' , active='Y' WHERE id =".$goal->__getId();
              
-            
-            $query="UPDATE goal SET heading = '".$goal->__getHeading()."', description ='".$goal->__getDesc()."', due_date='".$goal->__getDueDate()."', on_dashboard='".(int)$goal->__getOnDashboard()."' WHERE id =".$goal->__getId();
-            
+              }
             
             $result = mysql_query($query);
             
@@ -105,7 +109,13 @@ class goalDAO {
         
         public function createGoal($goal){
             
-            $query="INSERT INTO goal(heading, description,due_date,on_dashboard) VALUES ('".$goal->__getHeading()."','".$goal->__getDesc()."','".$goal->__getDueDate()."','".$goal->__getOnDashboard()."')";
+            if($goal->__getDueDate()===''){
+                $query="INSERT INTO goal(heading, description,on_dashboard,active) VALUES ('".$goal->__getHeading()."','".$goal->__getDesc()."','".$goal->__getOnDashboard()."','N')";
+            }
+            else {
+                $query="INSERT INTO goal(heading, description,due_date,on_dashboard,active) VALUES ('".$goal->__getHeading()."','".$goal->__getDesc()."','".$goal->__getDueDate()."','".$goal->__getOnDashboard()."','Y')";
+           
+            }
             $result = mysql_query($query);
             
             if($result){
